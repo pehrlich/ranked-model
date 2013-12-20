@@ -32,6 +32,11 @@ ActiveRecord::Schema.define :version => 0 do
     t.string :pond
   end
 
+  create_table :order_ducks, :force => true do |t|
+    t.string :name
+    t.integer :order
+  end
+
   create_table :elements, :force => true do |t|
     t.string :symbol
     t.string :type
@@ -84,6 +89,13 @@ class WrongFieldDuck < ActiveRecord::Base
 
   include RankedModel
   ranks :age, :with_same => :non_existant_field
+
+end
+
+class OrderDuck < ActiveRecord::Base
+
+  include RankedModel
+  ranks :order
 
 end
 
